@@ -14,6 +14,50 @@ public class Robot extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        robotMovement();
+        detectWallCollision();
+        detectBlockCollision();
     }    
+    /**
+     * Makes the robot move in the corresponding direction when the arrow keys are pressed.  
+     */
+    public void robotMovement()
+    {
+        if (Greenfoot.isKeyDown("up"))
+        {
+            setLocation( getX(), getY() -3 );
+        }
+        if (Greenfoot.isKeyDown("down"))
+        {
+            setLocation( getX(), getY() +3 );
+        }
+        if (Greenfoot.isKeyDown("left"))
+        {
+            setLocation( getX() -3, getY());
+        }
+        if (Greenfoot.isKeyDown("right"))
+        {
+            setLocation( getX() +3, getY());
+        }
+    }
+    /**
+     * Makes the robot instantly go back to start if it touches the wall.   
+     */
+    public void detectWallCollision()
+    {
+        if (isTouching(Wall.class))
+        {
+            setLocation(50, 50);
+        }
+    }
+    /**
+     * Makes the robot instantly go back to start if it touches the spinning block.   
+     */
+    public void detectBlockCollision()
+    {
+        if (isTouching(Block.class))
+        {
+            setLocation(50, 50);
+        }
+    }
 }

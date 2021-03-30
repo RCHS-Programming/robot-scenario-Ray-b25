@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class RobotWorld here.
  * 
  * @author Ray Brandeberry 
- * @version (a version number or a date)
+ * @version March 29, 2021
  */
 public class RobotWorld extends World
 {
@@ -21,16 +21,16 @@ public class RobotWorld extends World
         addObject(new Wall(), 50, 150);
         addObject(new Wall(), 150, 150);
         addObject(new Wall(), 250, 150);
-        addObject(new Block(), 425, 150);
+        addObject(new Block(), 412, 150);
         addObject(new Wall(), 575, 150);
         addObject(new Wall(), 650, 150);
         addObject(new Wall(), 750, 150);
-        addObject(new Home(), 600, 400);
-        addObject(new Scorepanel(), 200, 400);
+        addObject(new Home(), 750, 550);
+        addObject(new Scorepanel(), 75, 555);
         addObject(new Pizza(), 700, 40);
-        addObject(new Pizza(), 400, 300);
-        addObject(new Pizza(), 405, 420);
-        addObject(new Pizza(), 440, 470);
-        addObject(new Pizza(), 440, 406);
+        addObject(new Pizza(), 700, 250);
+        addObject(new Pizza(), 400, 550);
+        addObject(new Pizza(), 360, 150);
+        addObject(new Pizza(), 460, 150);
     }
 }

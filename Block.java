@@ -9,8 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Block extends Actor
 {
     /**
-     * Act - do whatever the Block wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Turns the block 2 degrees every frame, making the blokc spin constantly.
      */
     public void act() 
     {
