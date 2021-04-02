@@ -13,6 +13,7 @@ public class Robot extends Actor
     private int lives = 3;
     private int score = 0;
     private int pizzaEaten = 0;
+    private GreenfootImage gameOver= new GreenfootImage("gameover.png");
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,6 +25,7 @@ public class Robot extends Actor
         detectBlockCollision();
         detectHome();
         eatPizza();
+        showStatus();
     }    
     /**
      * Makes the robot move in the corresponding direction when the arrow keys are pressed.  
@@ -58,7 +60,7 @@ public class Robot extends Actor
     {
         if (isTouching(Wall.class))
         {
-            setLocation(50, 50);
+            setLocation(30, 30);
             Greenfoot.playSound("hurt.wav");
             removeLife();
         }
@@ -70,7 +72,7 @@ public class Robot extends Actor
     {
         if (isTouching(Block.class))
         {
-            setLocation(50, 50);
+            setLocation(30, 30);
             Greenfoot.playSound("hurt.wav");
             removeLife();
         }
@@ -82,11 +84,13 @@ public class Robot extends Actor
     {
         if (isTouching(Home.class))
         {
-            if (pizzaEaten == 5)
+            if (pizzaEaten >= 5)
             {
-                setLocation(50, 50);
+                setLocation(30, 30);
                 Greenfoot.playSound("yipee.wav");
                 pizzaEaten = 0;
+                increaseScore();
+                
             }
         }
     }
@@ -122,12 +126,33 @@ public class Robot extends Actor
     public void removeLife()
     {
         lives = lives - 1;
+        testEndGame();
     }
     /**
-     * 
+     * If we run out of lives, set the robot's image and end the game.
      */
     public void testEndGame()
     {
-       
+        if (lives <= 0)
+        {
+            setImage(gameOver);
+            Greenfoot.stop();
+        }
+    }
+    /** 
+     * Increases the score everytime we reach home.
+     */
+    public void increaseScore()
+    {
+        score = score + 1;
+    }
+    /**
+     * Shows text on the scoreboard.
+     */
+    public void showStatus()
+    {
+        getWorld().showText("Lives : "+lives, 70,530);
+        getWorld().showText("Pizzas : "+pizzaEaten, 70,550);
+        getWorld().showText("Score : "+score, 70,570);
     }
 }
